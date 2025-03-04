@@ -1,4 +1,5 @@
 #include "table.h"
+#include <string.h>
 
 static record *alloc_entry(record *el)
 {
@@ -144,8 +145,7 @@ table *alloc_table(size_t size)
 	t->records = NULL;
 	t->records = ALLOC(sizeof(record) * size);
 
-	for (int i = 0; i < t->len; i++)
-		t->records[i].key = NULL;
+      memset(t->records, 0, sizeof(record) * size);
 
 	return t;
 }

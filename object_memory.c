@@ -110,8 +110,10 @@ void free_table(table **t)
 	}
 
 	for (size_t i = 0; i < (*t)->len; i++)
-		if ((*t)->records[i].key->val)
+      {
+		if ((*t)->records[i].key)
 			free_entry_list((*t)->records[i]);
+      }
 
 	FREE((*t)->records);
 	(*t)->records = NULL;
