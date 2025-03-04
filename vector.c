@@ -102,16 +102,16 @@ void replace(element *i, element *obj, vector **vect)
 	set_vector_index(index, obj, &vect);
 
 }
-static inline element get_vector_index(int index, vector *v)
+static inline element get_vector_index(int index, vector **v)
 {
 
-	if (index > v->len)
+	if (index > (*v)->len)
 	{
 		error("Array index: %d, out of bounds", index);
 		return Null();
 	}
 
-	return OBJ(*(v->of + index), v->type);
+	return OBJ(*((*v)->of + index), (*v)->type);
 }
 
 element at(element *i, vector **obj)
